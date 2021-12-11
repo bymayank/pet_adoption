@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block heading %}
+<center style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 40px;">Paws Rescue Center 🐾</center>
+{% endblock %}
+
+{% block content%}
+
+  <div class="flex1">
+    {% for pet in pets %}
+  <div class="card" style="width: 250px; height: 400px; border-radius: 12px; opacity: 85%;">
+    <a href="{{url_for('pet_details', pet_id = pet.id)}}">
+      <img src= "{{url_for('static', filename = pet.id|string+".jpg")}}" height="120" style="padding-top: 30px;" >
+  </a>
+    <h1>{{ pet.name }}</h1>
+    
+    <p>{{ pet.bio }}</p>
+    
+  </div>
+  {% endfor %}
+  </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Add Pet {% endblock %} 
+
+{% block heading %}
+Add Pet:
+{% endblock %}
+
+{% block content %}
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    
+    {% if form %}
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.name.label }}: <br>
+        {{ form.name }} 
+        <br>
+        {% if form.name.errors %}
+            {% for error in form.name.errors %}
+            <b style="color:tomato;"> {{ error }} </b> 
+            <br>
+            {% endfor %}
+        {% endif %}
+        {{ form.bio.label }}: <br>
+        {{ form.bio }} 
+        <br>
+        {% if form.bio.errors %}
+            {% for error in form.bio.errors %}
+            <b style="color:tomato;"> {{ error }} </b> 
+            <br>
+            {% endfor %}
+        {% endif %}
+        {{form.csrf_token}}
+        {{ form.submit }}
+    </form>
+    {% endif %}
+{% endblock %}

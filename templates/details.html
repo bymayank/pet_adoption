@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %} {{pet["name"]}}'s Details {% endblock %} 
+
+{% block content %} 
+<div id="flex2">
+    <div style="  border-radius: 12px; background-color: white; width: 60%; height: auto; text-align: center;">
+        <img src= "{{url_for('static', filename = pet.id|string+".jpg")}}" height="500px" width="100%"  style=" border-radius: 12px;" ><br>
+        <h2 class="title" style="text-align: center;">{{ pet.name }}&nbsp;<img src="/static/v1.jpg"></img></h2> 
+        <hr class="style-six">
+        <p style="padding: 5%;"><b>Bio: &nbsp;</b> {{pet.bio}}</p>
+        <button style="background-color:rgb(112, 108, 108); font-size:larger; margin-bottom: 25px; margin-top: 10px; text-align: center;" onclick="location.href='{{ url_for('delete_pet', pet_id = pet.id)}}'"> Adopt Pet </button>
+    </div> 
+</div>
+<br><br>
+<div id="flex2">
+    <div style="  border-radius: 12px; background-color: white; width: 60%; height: auto; text-align: center;">
+        <h2 style="padding: 5%;"> Edit Pet Details </h2>
+        <!-- Error Message  -->
+        {% if message %}
+            <span style="background-color:tomato">
+            {{ message }}
+            <>
+            <br>
+        {% endif %}
+        <!--  -->
+        <!-- Form for Editing the Pet -->
+        <form action="{{url_for('pet_details', pet_id = pet.id)}}" method="POST" style="padding:5px;">
+            {{ form.name.label  }}: <br>
+            {{ form.name(value = pet.name) }} 
+            <br>
+            {{ form.bio.label }}: <br>
+            {{ form.bio(value = pet.bio) }} 
+            <br>
+            <div style="margin-bottom: 5%;">{{ form.csrf_token }}
+            {{ form.submit }}</div>
+        </form>
+    </div> 
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+#content{
+    font-size: 20px;
+}
+body {
+    background: burlywood;
+    background-image:   url("v2.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+}
