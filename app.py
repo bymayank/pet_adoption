@@ -97,8 +97,7 @@ def delete_pet(pet_id):
             db.session.rollback()
         return redirect(url_for('homepage', _scheme='http', _external=True))
     else:
-        abort(404, description="not allowed") 
-        return render_template('details.html', form=form)
+        return redirect(url_for('login'))
 
 
 @app.route("/signup", methods=["POST", "GET"])
