@@ -23,10 +23,10 @@ class LoginForm(FlaskForm):
 class EditPetForm(FlaskForm):
     name = StringField("Pet's Name", validators=[InputRequired()])
     bio = StringField("Pet's Bio", validators=[InputRequired()])
-    submit = SubmitField("Edit Pet")
+    submit = SubmitField("Save Changes")
 
 class GetPet(FlaskForm):
     name=StringField("Pet's Name",validators=[InputRequired()])
     bio=StringField("Pet's Bio",validators=[InputRequired()])
-    submit=SubmitField("add pet")
+    submit=SubmitField("Add Pet")
 
