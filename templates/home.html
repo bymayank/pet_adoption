@@ -10,7 +10,7 @@
 
   <div class="flex1">
     {% for pet in pets %}
-  <div class="card" style="width: 250px; height: 400px; border-radius: 12px; opacity: 85%;">
+  <div class="card" style="width: 250px; height: 400px; border-radius: 12px; opacity: 75%;">
     <a href="{{url_for('pet_details', pet_id = pet.id)}}">
       <img src= "{{url_for('static', filename = pet.id|string+".jpg")}}" height="120" style="padding-top: 30px;" >
   </a>
